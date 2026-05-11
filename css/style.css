@@ -259,6 +259,27 @@ span-color {
     grid-gap: 2em;
 }
 
+/* Lock row order on home: cards 1–2 top row, 3–4 second row (explicit vs. auto-flow quirks) */
+#index-page #proj-gallery > .proj-card:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#index-page #proj-gallery > .proj-card:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#index-page #proj-gallery > .proj-card:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#index-page #proj-gallery > .proj-card:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
 #art-gallery {
     grid-template-columns: repeat(4, 1fr);
 }
@@ -346,6 +367,39 @@ strong {
     border-radius: 10px;
     color: var(--primary-color);
     margin: 3em 0;
+}
+
+/* Quote-style callout: accent line + body-weight text in body grey (no boxed border) */
+.callout-quote {
+    margin: 1.25em 0 1.75em;
+    padding: 0.35em 0 0.35em 1.25rem;
+    border: 0;
+    border-left: 4px solid var(--primary-color);
+    color: var(--text-grey);
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.55;
+}
+
+/* Customer spotlight: same accent as quote, regular body copy */
+.callout-customers {
+    margin: 1.25rem 0 1.5rem;
+    padding: 0.75rem 0 0.75rem 1.25rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+.callout-customers-label {
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-grey);
+    font-weight: 600;
+    margin: 0 0 0.65rem;
+}
+
+.callout-customers-brand {
+    color: var(--text-dark);
+    font-weight: var(--font-bold);
 }
 
 .proj-caption {
@@ -524,6 +578,11 @@ Media queries
     }
     #proj-gallery {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    #index-page #proj-gallery > .proj-card:nth-child(n) {
+        grid-column: auto;
+        grid-row: auto;
     }
     #art-gallery {
         grid-template-columns: repeat(2, 1fr);

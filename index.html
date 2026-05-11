@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Helps local dev: browsers stop serving a stale index.html from cache -->
+    <meta http-equiv="Cache-Control" content="no-cache">
     <title title="https://mirandamo.com">Miranda Mo</title>
     <link rel="icon" href="img/misc/favicon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -10,7 +12,7 @@
     <script src="https://kit.fontawesome.com/67f90579cc.js" crossorigin="anonymous"></script>
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
+<body id="index-page">
     <svg id="fader"></svg>
     <div class="container">
         <!-- Navbar -->
@@ -62,7 +64,6 @@
                             target="_blank"><span class="proj-link">IvyHacks</span></a>.</p>
                     <div>
                         <a href="mailto:miranda_mo@brown.edu" target="_blank" class="fa fa-envelope social-icon"></a>
-                        <a href="https://github.com/mirandamo" target="_blank" class="fa fab fa-github social-icon"></a>
                         <a href="https://www.linkedin.com/in/mirandamo/" target="_blank"
                             class="fa fa-linkedin social-icon"></a>
                     </div>
@@ -75,6 +76,37 @@
         <!-- Portfolio -->
         <div id="portfolio" class="space-top">
             <div id="proj-gallery" class="grid mb-5">
+                <div class="proj-card card">
+                    <a href="proj/llamaapi.html">
+                        <div class="w-100">
+                            <img class="card-img" src="img/thumbnail/microsoft.jpg" alt="Llama API thumbnail">
+                        </div>
+                        <div class="card-body">
+                            <div class="space-bottom-sm">
+                                <span class="badge proj-label">Development</span>
+                                <span class="badge proj-label">API</span>
+                                <span class="badge proj-label">Artificial Intelligence</span>
+                            </div>
+                            <h3 class="card-title">Llama API</h3>
+                            <p class="card-text">Building with large language models through the API</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="proj-card card">
+                    <a href="proj/dolphi.html">
+                        <div class="w-100">
+                            <img class="card-img" src="img/thumbnail/ivyhacks.jpg" alt="Dolphi thumbnail">
+                        </div>
+                        <div class="card-body">
+                            <div class="space-bottom-sm">
+                                <span class="badge proj-label">Development</span>
+                                <span class="badge proj-label">Passion Project</span>
+                            </div>
+                            <h3 class="card-title">Dolphi</h3>
+                            <p class="card-text">Small builds and technical explorations</p>
+                        </div>
+                    </a>
+                </div>
                 <div class="proj-card card">
                     <a href="proj/microsoft.html">
                         <div class="w-100">
@@ -107,38 +139,6 @@
                         </div>
                     </a>
                 </div>
-                <div class="proj-card card">
-                    <a href="proj/sensetime.html">
-                        <div class="w-100">
-                            <img class="card-img" src="img/thumbnail/sensetime.jpg" alt="Card image">
-                        </div>
-                        <div class="card-body">
-                            <div class="space-bottom-sm">
-                                <span class="badge proj-label">3D Design</span>
-                                <span class="badge proj-label">UI/UX Design</span>
-                                <span class="badge proj-label">Artificial Intelligence</span>
-                            </div>
-                            <h3 class="card-title">SenseTime • UX Design Internship</h3>
-                            <p class="card-text">Creating 3D characters and UI/UX of an AI educational application</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="proj-card card">
-                    <a href="proj/hackathon.html">
-                        <div class="w-100">
-                            <img class="card-img" src="img/thumbnail/ivyhacks.jpg" alt="Card image">
-                        </div>
-                        <div class="card-body">
-                            <div class="space-bottom-sm">
-                                <span class="badge proj-label">3D Design</span>
-                                <span class="badge proj-label">Motion Graphics</span>
-                                <span class="badge proj-label">Branding</span>
-                            </div>
-                            <h3 class="card-title">Hackathon 3D Visual Design</h3>
-                            <p class="card-text">Branding IvyHacks and Hack@Brown</p>
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
         <div class="space-md">
@@ -155,12 +155,11 @@
                             var d = new Date()
                             document.write(d.getFullYear())
                         </script>
-                        coded with 💖 by Miranda Mo
+                        built with 💖 by Miranda Mo
                     </p>
                 </div>
                 <div class="col-sm-4 text-md-right">
                     <a href="mailto:miranda_mo@brown.edu" target="_blank" class="fa fa-envelope social-icon"></a>
-                    <a href="https://github.com/mirandamo" target="_blank" class="fa fab fa-github social-icon"></a>
                     <a href="https://www.linkedin.com/in/mirandamo/" target="_blank"
                         class="fa fa-linkedin social-icon"></a>
                 </div>

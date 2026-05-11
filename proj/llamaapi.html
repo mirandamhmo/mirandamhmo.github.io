@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Llama API | Miranda Mo</title>
+    <link rel="icon" href="../img/misc/favicon.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/67f90579cc.js" crossorigin="anonymous"></script>
+    <link href="../css/style.css" rel="stylesheet">
+    <style>
+        .img-placeholder {
+            width: 100%;
+            background: #F2F2F2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1em;
+            color: #CCCCCC;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <svg id="fader"></svg>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white smart-scroll">
+            <a class="navbar-brand js-scroll-trigger" href="../index.html">Miranda Mo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"> <span
+                    class="navbar-toggler-icon"></span> </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="../index.html#portfolio">Work</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="../proj/sandbox.html">Fun</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="../docs/MirandaMo_Resume.pdf"
+                            target="_blank">Resume</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="sidebar">
+                    <div class="space-bottom"><a href="../index.html" class="anchor">← Home</a></div>
+                    <div id="tags"> </div>
+                </div>
+            </div>
+            <div class="col-lg-10 ml-auto col-sm-12">
+                <div class="space-md">
+                    <div class="headline-content">
+                        <h1>Llama API</h1>
+                        <h1 class="subtitle">Fine-tuning & evaluation for Llama models</h1>
+                    </div>
+                    <div class="row d-flex align-content-center space-top proj-body">
+                        <div class="col-md-6">
+                            <div class="text-small">Highlight</div>
+                            <p>Presented at <a href="https://ai.meta.com/blog/llamacon-llama-news/" class="proj-link"
+                                    target="_blank" rel="noopener noreferrer">LlamaCon</a> with Meta leadership
+                                (including Mark Zuckerberg); <strong>3.8M</strong> livestream viewers.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-small">Overview</div>
+                            <span class="badge proj-label">Dev platforms</span>
+                            <span class="badge proj-label">Open source API</span>
+                            <span class="badge proj-label">LLM</span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Splash placeholder -->
+                <div class="img-placeholder space-bottom" style="height:480px;">Cover image</div>
+
+                <div class="row space-md">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 id="s1" class="section">Impact</h1>
+                        <p class="proj-body">Shipped end-to-end fine-tuning and evaluation for Llama on the open-source
+                            API.</p>
+                        <p class="proj-body"><strong>600+</strong> in the room at <a
+                                href="https://ai.meta.com/blog/llamacon-llama-news/" class="proj-link" target="_blank"
+                                rel="noopener noreferrer">LlamaCon</a>.</p>
+                        <div class="callout-customers" role="note" aria-label="Customer adoption">
+                            <p class="callout-customers-label">Satisfied customers</p>
+                            <p class="proj-body p-0"><strong class="callout-customers-brand">AT&amp;T</strong> — ~10×
+                                faster insights, ~90% lower cost on call summarization. <a
+                                    href="https://www.youtube.com/watch?v=-m0XywLdSPg" class="proj-link" target="_blank"
+                                    rel="noopener noreferrer">(source)</a></p>
+                            <p class="proj-body p-0 mt-2"><strong class="callout-customers-brand">Spotify</strong>
+                                — +14% domain-specific accuracy. <a
+                                    href="https://www.youtube.com/watch?v=-m0XywLdSPg" class="proj-link" target="_blank"
+                                    rel="noopener noreferrer">(source)</a></p>
+                        </div>
+                        <div class="row space-top" role="region" aria-label="Project metrics">
+                            <div class="col-md-4">
+                                <h2>3.8M</h2>
+                                <p class="text-small">Livestream viewers · <a
+                                        href="https://ai.meta.com/blog/llamacon-llama-news/" class="proj-link"
+                                        target="_blank" rel="noopener noreferrer">LlamaCon</a> keynote</p>
+                            </div>
+                            <div class="col-md-4">
+                                <h2>20K+</h2>
+                                <p class="text-small">signups in 2 months</p>
+                            </div>
+                            <div class="col-md-4">
+                                <h2>6 weeks</h2>
+                                <p class="text-small">to ship the core experience</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overview image placeholder -->
+                <div class="img-placeholder space-bottom" style="height:400px;">Product overview image</div>
+
+                <div class="row space-md">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 id="s2" class="section">The problem</h1>
+                        <p class="proj-body">Fine-tuning was easy to run but <strong>hard to understand</strong>.</p>
+                        <p class="proj-body">Most users were <strong>small businesses and students</strong> without ML
+                            backgrounds—they wanted <strong>cheaper, faster models</strong>, not more knobs.</p>
+                        <p class="proj-body">In practice:</p>
+                        <ul class="proj-body">
+                            <li>training felt opaque</li>
+                            <li>evaluation was unclear</li>
+                            <li>results were hard to trust or improve</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Problem image placeholder -->
+                <div class="img-placeholder space-bottom" style="height:360px;">Problem space image</div>
+
+                <div class="row space-md">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 id="s3" class="section">Core insight</h1>
+                        <p class="proj-body">People stumble when they can't answer:</p>
+                        <ul class="proj-body">
+                            <li>Did this actually improve anything?</li>
+                            <li>Where did it fail?</li>
+                            <li>What should I change next?</li>
+                        </ul>
+
+                        <blockquote class="callout-quote">The goal wasn't to show every control—it was to make the path
+                            from start to finish easy.</blockquote>
+                    </div>
+                </div>
+
+                <div class="row space-md">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 id="s4" class="section">What I built</h1>
+                        <p class="proj-body">End-to-end fine-tuning and evaluation—upload, split, train, evaluate, iterate.</p>
+
+                        <p class="proj-body">Included:</p>
+                        <ul class="proj-body">
+                            <li>dataset upload and formatting guidance</li>
+                            <li>train / eval split</li>
+                            <li>fine-tuning workflow</li>
+                            <li>evaluation and iteration loop</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Workflow image placeholder (full width) -->
+                <div class="img-placeholder space-bottom" style="height:400px;">Workflow / product screenshot</div>
+
+                <div class="row space-md">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 id="s5" class="section">Real example</h1>
+                        <p class="proj-body">Stress-tested on a <strong>customer-support</strong> task with messy,
+                            real-world prompts.</p>
+                    </div>
+                </div>
+
+                <!-- Before / after placeholder pair -->
+                <div class="row space-md bg-grey mb-3">
+                    <div class="col-11 mx-auto">
+                        <div class="row">
+                            <div class="col-md-6 mt-5">
+                                <h4>Before</h4>
+                                <ul class="proj-body">
+                                    <li>inconsistent responses</li>
+                                    <li>unclear structure</li>
+                                    <li>unpredictable output quality</li>
+                                    <li>no way to tell if changes helped</li>
+                                </ul>
+                                <div class="img-placeholder" style="height:240px;">Before screenshot</div>
+                                <p class="proj-caption"><strong>Before</strong>: base model output</p>
+                            </div>
+                            <div class="col-md-6 mt-5">
+                                <h4>After fine-tuning + evaluation loop</h4>
+                                <ul class="proj-body">
+                                    <li>structured, consistent responses</li>
+                                    <li>clear formatting aligned to expectations</li>
+                                    <li>predictable behavior across inputs</li>
+                                    <li>identify failure cases quickly</li>
+                                </ul>
+                                <div class="img-placeholder" style="height:240px;">After screenshot</div>
+                                <p class="proj-caption"><strong>After</strong>: fine-tuned model output</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row space-md">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 id="s6" class="section">Design decisions</h1>
+                    </div>
+                </div>
+
+                <div class="row space-md bg-grey mb-3">
+                    <div class="col-11 mx-auto">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-color-bold">Decision 1</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h2>Make evaluation part of the workflow upfront</h2>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="proj-body p-0">Train/eval split required up front.</p>
+                                <p class="proj-body p-0">→ Performance grounded in unseen data, not assumptions.</p>
+                            </div>
+                        </div>
+                        <div class="img-placeholder space-bottom" style="height:280px;">Train / eval split</div>
+                    </div>
+                </div>
+
+                <div class="row space-md bg-grey mb-3">
+                    <div class="col-11 mx-auto">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-color-bold">Decision 2</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h2>Optimize for “next-next-next” onboarding</h2>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="proj-body p-0">Guided linear flow, strong defaults—no ML course required.</p>
+                                <p class="proj-body p-0">→ Less setup friction; faster first successful run.</p>
+                            </div>
+                        </div>
+                        <div class="img-placeholder space-bottom" style="height:280px;">Guided onboarding</div>
+                    </div>
+                </div>
+
+                <div class="row space-md bg-grey mb-3">
+                    <div class="col-11 mx-auto">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-color-bold">Decision 3</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h2>Make training progress visible</h2>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="proj-body p-0">Logs and status during training—not a silent spinner.</p>
+                                <p class="proj-body p-0">→ Long jobs feel less uncertain; users stay oriented.</p>
+                            </div>
+                        </div>
+                        <div class="img-placeholder space-bottom" style="height:280px;">Training progress and logs</div>
+                    </div>
+                </div>
+
+                <div class="row space-md bg-grey mb-3">
+                    <div class="col-11 mx-auto">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-color-bold">Decision 4</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h2>Surface high-level, glanceable evaluation results</h2>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="proj-body p-0">Evaluation summaries you can skim—not dense dashboards.</p>
+                                <p class="proj-body p-0">→ See if quality moved without parsing heavy metrics.</p>
+                            </div>
+                        </div>
+                        <div class="img-placeholder space-bottom" style="height:280px;">Evaluation results overview</div>
+                    </div>
+                </div>
+
+                <div class="row space-md">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="space-top">System thinking</h2>
+                        <p class="proj-body">One clear loop:</p>
+                        <p class="proj-body"><strong>Data → Train → Evaluate → Test → Iterate</strong></p>
+                        <p class="proj-body">Out of scope:</p>
+                        <ul class="proj-body">
+                            <li>dataset management platforms</li>
+                            <li>deep analytics dashboards</li>
+                            <li>batch inference tooling</li>
+                        </ul>
+                        <p class="proj-body">Extra surface area doesn't help if the core loop stays opaque.</p>
+                    </div>
+                </div>
+
+                <div class="row space-md">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 id="s7" class="section">Reflection</h1>
+                        <p class="proj-body">AI products win when people can see what the model is doing—not only run
+                            it.</p>
+                        <blockquote class="callout-quote">The goal wasn't to make fine-tuning easier—it was to make it
+                            understandable.</blockquote>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <footer class="container py-5">
+        <div class="row">
+            <div class="col-sm-8">
+                <p class="mb-1">&copy;
+                    <script>
+                        var d = new Date()
+                        document.write(d.getFullYear())
+                    </script>
+                    built with 💖 by Miranda Mo
+                </p>
+            </div>
+            <div class="col-sm-4 text-md-right">
+                <a href="mailto:miranda_mo@brown.edu" target="_blank" class="fa fa-envelope social-icon"></a>
+                <a href="https://www.linkedin.com/in/mirandamo/" target="_blank" class="fa fa-linkedin social-icon"></a>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="../js/custom.js"></script>
+</body>
+
+</html>
