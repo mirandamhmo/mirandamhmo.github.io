@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Llama API | Miranda Mo</title>
+    <title>Meta Llama API | Miranda Mo</title>
     <link rel="icon" href="../img/misc/favicon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -56,22 +56,26 @@
             <div class="col-lg-10 ml-auto col-sm-12">
                 <div class="space-md">
                     <div class="headline-content">
-                        <h1>Llama API</h1>
-                        <h1 class="subtitle">Fine-tuning & evaluation for Llama models</h1>
+                        <h1>Llama API Platform</h1>
+                        <h1 class="subtitle">Fine-tuning & evaluation</h1>
                     </div>
                     <div class="row d-flex align-content-center space-top proj-body">
+                        <div class="col-md-3">
+                            <div class="text-small">Timeline</div>
+                            <p>April 2025</p>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="text-small">Links</div>
+                            <p class="mb-2"><a href="https://ai.meta.com/blog/llamacon-llama-news/" class="proj-link"
+                                    target="_blank" rel="noopener noreferrer">Meta Newsroom</a></p>
+                            <p class="mb-0"><a href="https://www.youtube.com/watch?v=-m0XywLdSPg" class="proj-link"
+                                    target="_blank" rel="noopener noreferrer">Tutorial and overview</a></p>
+                        </div>
                         <div class="col-md-6">
                             <div class="text-small">Highlight</div>
                             <p>Presented at <a href="https://ai.meta.com/blog/llamacon-llama-news/" class="proj-link"
                                     target="_blank" rel="noopener noreferrer">LlamaCon</a> with Meta leadership
                                 (including Mark Zuckerberg); <strong>3.8M</strong> livestream viewers.</p>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="text-small">Overview</div>
-                            <span class="badge proj-label">Dev platforms</span>
-                            <span class="badge proj-label">Open source API</span>
-                            <span class="badge proj-label">LLM</span>
-
                         </div>
                     </div>
                 </div>
@@ -82,9 +86,8 @@
                 <div class="row space-md">
                     <div class="col-lg-8 mx-auto">
                         <h1 id="s1" class="section">Impact</h1>
-                        <p class="proj-body">Shipped end-to-end fine-tuning and evaluation for Llama on the open-source
-                            API.</p>
-                        <p class="proj-body"><strong>600+</strong> in the room at <a
+                        <p class="proj-body">I shipped end-to-end fine-tuning and evaluation on the Meta Llama API Platform.</p>
+                        <p class="proj-body">We presented to <strong>600+</strong> people in the room at <a
                                 href="https://ai.meta.com/blog/llamacon-llama-news/" class="proj-link" target="_blank"
                                 rel="noopener noreferrer">LlamaCon</a>.</p>
                         <div class="callout-customers" role="note" aria-label="Customer adoption">
@@ -107,11 +110,11 @@
                             </div>
                             <div class="col-md-4">
                                 <h2>20K+</h2>
-                                <p class="text-small">signups in 2 months</p>
+                                <p class="text-small">Reached 20K+ signups in the first two months</p>
                             </div>
                             <div class="col-md-4">
                                 <h2>6 weeks</h2>
-                                <p class="text-small">to ship the core experience</p>
+                                <p class="text-small">Shipped the core experience in 6 weeks</p>
                             </div>
                         </div>
                     </div>
@@ -123,14 +126,15 @@
                 <div class="row space-md">
                     <div class="col-lg-8 mx-auto">
                         <h1 id="s2" class="section">The problem</h1>
-                        <p class="proj-body">Fine-tuning was easy to run but <strong>hard to understand</strong>.</p>
-                        <p class="proj-body">Most users were <strong>small businesses and students</strong> without ML
-                            backgrounds—they wanted <strong>cheaper, faster models</strong>, not more knobs.</p>
+                        <p class="proj-body">Fine-tuning <strong>runs</strong> easily but stays <strong>hard to
+                                understand</strong>.</p>
+                        <p class="proj-body">Most users are small businesses and students <strong>without ML
+                            backgrounds</strong>—they want <strong>cheaper, faster models</strong>, not more knobs.</p>
                         <p class="proj-body">In practice:</p>
                         <ul class="proj-body">
-                            <li>training felt opaque</li>
-                            <li>evaluation was unclear</li>
-                            <li>results were hard to trust or improve</li>
+                            <li>training feels opaque</li>
+                            <li>evaluation feels unclear</li>
+                            <li>results stay hard to trust or improve</li>
                         </ul>
                     </div>
                 </div>
@@ -141,14 +145,14 @@
                 <div class="row space-md">
                     <div class="col-lg-8 mx-auto">
                         <h1 id="s3" class="section">Core insight</h1>
-                        <p class="proj-body">People stumble when they can't answer:</p>
+                        <p class="proj-body">People get stuck when they can't answer:</p>
                         <ul class="proj-body">
                             <li>Did this actually improve anything?</li>
                             <li>Where did it fail?</li>
                             <li>What should I change next?</li>
                         </ul>
 
-                        <blockquote class="callout-quote">The goal wasn't to show every control—it was to make the path
+                        <blockquote class="callout-quote">The goal isn't to show every control—it is to keep the path
                             from start to finish easy.</blockquote>
                     </div>
                 </div>
@@ -156,9 +160,10 @@
                 <div class="row space-md">
                     <div class="col-lg-8 mx-auto">
                         <h1 id="s4" class="section">What I built</h1>
-                        <p class="proj-body">End-to-end fine-tuning and evaluation—upload, split, train, evaluate, iterate.</p>
+                        <p class="proj-body">I shipped an end-to-end workflow for fine-tuning and evaluation: upload,
+                            split, train, evaluate, iterate.</p>
 
-                        <p class="proj-body">Included:</p>
+                        <p class="proj-body">The product includes:</p>
                         <ul class="proj-body">
                             <li>dataset upload and formatting guidance</li>
                             <li>train / eval split</li>
@@ -174,7 +179,7 @@
                 <div class="row space-md">
                     <div class="col-lg-8 mx-auto">
                         <h1 id="s5" class="section">Real example</h1>
-                        <p class="proj-body">Stress-tested on a <strong>customer-support</strong> task with messy,
+                        <p class="proj-body">I stress-tested the flow on a <strong>customer-support</strong> task with messy,
                             real-world prompts.</p>
                     </div>
                 </div>
@@ -186,10 +191,10 @@
                             <div class="col-md-6 mt-5">
                                 <h4>Before</h4>
                                 <ul class="proj-body">
-                                    <li>inconsistent responses</li>
-                                    <li>unclear structure</li>
-                                    <li>unpredictable output quality</li>
-                                    <li>no way to tell if changes helped</li>
+                                    <li>responses are inconsistent</li>
+                                    <li>structure is unclear</li>
+                                    <li>output quality is unpredictable</li>
+                                    <li>users can't tell if changes helped</li>
                                 </ul>
                                 <div class="img-placeholder" style="height:240px;">Before screenshot</div>
                                 <p class="proj-caption"><strong>Before</strong>: base model output</p>
@@ -197,10 +202,10 @@
                             <div class="col-md-6 mt-5">
                                 <h4>After fine-tuning + evaluation loop</h4>
                                 <ul class="proj-body">
-                                    <li>structured, consistent responses</li>
-                                    <li>clear formatting aligned to expectations</li>
-                                    <li>predictable behavior across inputs</li>
-                                    <li>identify failure cases quickly</li>
+                                    <li>responses are structured and consistent</li>
+                                    <li>formatting matches expectations</li>
+                                    <li>behavior is predictable across inputs</li>
+                                    <li>failure cases surface quickly</li>
                                 </ul>
                                 <div class="img-placeholder" style="height:240px;">After screenshot</div>
                                 <p class="proj-caption"><strong>After</strong>: fine-tuned model output</p>
@@ -227,8 +232,8 @@
                                 <h2>Make evaluation part of the workflow upfront</h2>
                             </div>
                             <div class="col-md-6">
-                                <p class="proj-body p-0">Train/eval split required up front.</p>
-                                <p class="proj-body p-0">→ Performance grounded in unseen data, not assumptions.</p>
+                                <p class="proj-body p-0">I required a train/eval split up front.</p>
+                                <p class="proj-body p-0">→ That grounds performance in unseen data, not assumptions.</p>
                             </div>
                         </div>
                         <div class="img-placeholder space-bottom" style="height:280px;">Train / eval split</div>
@@ -247,8 +252,9 @@
                                 <h2>Optimize for “next-next-next” onboarding</h2>
                             </div>
                             <div class="col-md-6">
-                                <p class="proj-body p-0">Guided linear flow, strong defaults—no ML course required.</p>
-                                <p class="proj-body p-0">→ Less setup friction; faster first successful run.</p>
+                                <p class="proj-body p-0">I designed a guided linear flow with strong defaults—no ML course
+                                    required.</p>
+                                <p class="proj-body p-0">→ That cuts setup friction and speeds up a first successful run.</p>
                             </div>
                         </div>
                         <div class="img-placeholder space-bottom" style="height:280px;">Guided onboarding</div>
@@ -267,8 +273,8 @@
                                 <h2>Make training progress visible</h2>
                             </div>
                             <div class="col-md-6">
-                                <p class="proj-body p-0">Logs and status during training—not a silent spinner.</p>
-                                <p class="proj-body p-0">→ Long jobs feel less uncertain; users stay oriented.</p>
+                                <p class="proj-body p-0">I surfaced logs and status during training—not a silent spinner.</p>
+                                <p class="proj-body p-0">→ That lowers uncertainty on long jobs and keeps people oriented.</p>
                             </div>
                         </div>
                         <div class="img-placeholder space-bottom" style="height:280px;">Training progress and logs</div>
@@ -287,8 +293,10 @@
                                 <h2>Surface high-level, glanceable evaluation results</h2>
                             </div>
                             <div class="col-md-6">
-                                <p class="proj-body p-0">Evaluation summaries you can skim—not dense dashboards.</p>
-                                <p class="proj-body p-0">→ See if quality moved without parsing heavy metrics.</p>
+                                <p class="proj-body p-0">I designed evaluation summaries for skimming—not dense
+                                    dashboards.</p>
+                                <p class="proj-body p-0">→ That lets people see if quality moved without parsing heavy
+                                    metrics.</p>
                             </div>
                         </div>
                         <div class="img-placeholder space-bottom" style="height:280px;">Evaluation results overview</div>
@@ -298,15 +306,15 @@
                 <div class="row space-md">
                     <div class="col-lg-8 mx-auto">
                         <h2 class="space-top">System thinking</h2>
-                        <p class="proj-body">One clear loop:</p>
+                        <p class="proj-body">The product centers on one clear loop:</p>
                         <p class="proj-body"><strong>Data → Train → Evaluate → Test → Iterate</strong></p>
-                        <p class="proj-body">Out of scope:</p>
+                        <p class="proj-body">It intentionally omits:</p>
                         <ul class="proj-body">
                             <li>dataset management platforms</li>
                             <li>deep analytics dashboards</li>
                             <li>batch inference tooling</li>
                         </ul>
-                        <p class="proj-body">Extra surface area doesn't help if the core loop stays opaque.</p>
+                        <p class="proj-body">Extra surface area does not help if the core loop stays opaque.</p>
                     </div>
                 </div>
 
@@ -315,7 +323,7 @@
                         <h1 id="s7" class="section">Reflection</h1>
                         <p class="proj-body">AI products win when people can see what the model is doing—not only run
                             it.</p>
-                        <blockquote class="callout-quote">The goal wasn't to make fine-tuning easier—it was to make it
+                        <blockquote class="callout-quote">The goal isn't to make fine-tuning easier—it is to make it
                             understandable.</blockquote>
                     </div>
                 </div>
