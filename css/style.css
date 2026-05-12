@@ -228,6 +228,58 @@ Home
     color: var(--text-grey);
 }
 
+.header-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 0.35rem;
+}
+
+#index-page .headline-big {
+    margin-bottom: 1.25rem;
+}
+
+#index-page .header-body {
+    margin-top: 0;
+    margin-bottom: 1.75rem;
+}
+
+#index-page .header-cta {
+    margin-top: 0;
+}
+
+/* Easter egg: hover "product designer" → strikethrough + joke above */
+#index-page .header-role-easter {
+    position: relative;
+    display: inline-block;
+    vertical-align: baseline;
+    cursor: default;
+}
+
+#index-page .header-role-easter__joke {
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    margin-bottom: 0.15em;
+    font-weight: var(--font-bold);
+    line-height: 1.2;
+    white-space: nowrap;
+    color: var(--text-dark);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#index-page .header-role-easter:hover .header-role-easter__joke {
+    opacity: 1;
+}
+
+#index-page .header-role-easter:hover .header-role-easter__role {
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+}
+
 .header-body {
     line-height: 2em;
 }
@@ -259,7 +311,7 @@ span-color {
     grid-gap: 2em;
 }
 
-/* Lock row order on home: cards 1–2 top row, 3–4 second row (explicit vs. auto-flow quirks) */
+/* Lock row order on home: cards 1–2 top row, 3–4 second row */
 #index-page #proj-gallery > .proj-card:nth-child(1) {
     grid-column: 1;
     grid-row: 1;
@@ -314,6 +366,48 @@ span-color {
 .proj-card:hover {
     box-shadow: 0 2px 40px 0 var(--text-light);
     transform: translateY(-.8em);
+}
+
+.footer-contact {
+    font-size: 0.95rem;
+}
+
+.footer-text-link {
+    color: var(--text-dark);
+    font-weight: var(--font-bold);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: 1px;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    border: none;
+    line-height: inherit;
+    transition: color 0.2s ease;
+}
+
+.footer-text-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+    opacity: 1;
+}
+
+/* No ring after mouse click; keyboard users still get a clear focus indicator */
+.footer-text-link:focus {
+    outline: none;
+}
+
+.footer-text-link:focus-visible {
+    outline: 2px solid var(--text-dark);
+    outline-offset: 3px;
+}
+
+.footer-contact-sep {
+    color: var(--text-dark);
+    padding: 0 0.45rem;
+    user-select: none;
 }
 
 .card-body {
@@ -530,6 +624,52 @@ video {
     opacity: 0.8;
 }
 
+/* Outline pill — same radius/padding rhythm as .proj-btn; brand green */
+.proj-btn-outline__inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.proj-btn-outline__icon {
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
+.proj-btn-outline {
+    display: inline-block;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 14px 28px;
+    text-align: center;
+    margin: 4px 0;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.3s;
+    border-radius: 50px;
+    font-weight: var(--font-bold);
+    font-size: 1rem;
+    line-height: 1.25;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.proj-btn-outline:hover,
+.proj-btn-outline:focus {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    opacity: 1;
+}
+
+.proj-btn-outline:focus {
+    outline: 2px solid var(--text-dark);
+    outline-offset: 3px;
+}
+
 .icon-sm {
     font-size: 1.3rem;
     margin-right: 10px;
@@ -630,6 +770,7 @@ Media queries
         grid-column: auto;
         grid-row: auto;
     }
+
     #art-gallery {
         grid-template-columns: repeat(2, 1fr);
     }

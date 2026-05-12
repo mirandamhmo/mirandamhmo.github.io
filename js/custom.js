@@ -7,7 +7,62 @@ var wh = win.height();
 $(document).ready(function () {
     sidebar();
     fadeInPage();
+    copyEmailButton();
 });
+
+/** Copy email to clipboard (hero, footer, any .js-copy-email) */
+function copyEmailButton() {
+    var buttons = document.querySelectorAll('.js-copy-email');
+    if (!buttons.length) {
+        return;
+    }
+    for (var i = 0; i < buttons.length; i += 1) {
+        (function (btn) {
+            var email = btn.getAttribute('data-email');
+            if (!email) {
+                return;
+            }
+            var label = btn.querySelector('.proj-btn-outline__label');
+            var defaultLabel = label
+                ? (label.textContent || '').replace(/\s+/g, ' ').trim()
+                : (btn.textContent || '').replace(/\s+/g, ' ').trim();
+            btn.addEventListener('click', function () {
+                function showCopied() {
+                    if (label) {
+                        label.textContent = 'Copied!';
+                        setTimeout(function () {
+                            label.textContent = defaultLabel;
+                        }, 2000);
+                    } else {
+                        btn.textContent = 'Copied!';
+                        setTimeout(function () {
+                            btn.textContent = defaultLabel;
+                        }, 2000);
+                    }
+                }
+                function fallbackCopy() {
+                    var ta = document.createElement('textarea');
+                    ta.value = email;
+                    ta.setAttribute('readonly', '');
+                    ta.style.position = 'absolute';
+                    ta.style.left = '-9999px';
+                    document.body.appendChild(ta);
+                    ta.select();
+                    try {
+                        document.execCommand('copy');
+                        showCopied();
+                    } catch (e) { /* ignore */ }
+                    document.body.removeChild(ta);
+                }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(email).then(showCopied).catch(fallbackCopy);
+                } else {
+                    fallbackCopy();
+                }
+            });
+        })(buttons[i]);
+    }
+}
 
 /** Navbar hidden on scroll-down*/
 /** ===================== */
