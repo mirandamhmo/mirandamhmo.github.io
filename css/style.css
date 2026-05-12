@@ -357,8 +357,39 @@ strong {
 
 .proj-body {
     line-height: 2em;
-    padding-bottom: 20px;
+    padding-bottom: 12px;
     color: var(--text-grey);
+}
+
+/* Lists sit tight under the preceding line of copy */
+p.proj-body:has(+ ul.proj-body),
+p.proj-body:has(+ ol.proj-body) {
+    padding-bottom: 2px;
+}
+
+ul.proj-body,
+ol.proj-body {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.row + ul.proj-body,
+.row + ol.proj-body {
+    margin-top: 0;
+}
+
+/* Metric tile row → list (Dolphi Impact): trim default heading/body margins */
+div.row[role="region"] + ul.proj-body,
+div.row[role="region"] + ol.proj-body {
+    margin-top: -0.5rem;
+}
+
+.row[role="region"] h2 {
+    margin-bottom: 0.25rem;
+}
+
+.row[role="region"] .text-small {
+    margin-bottom: 0;
 }
 
 .proj-body-box {
@@ -412,6 +443,16 @@ strong {
     margin: 1.1em 0;
 }
 
+.proj-body li:first-child {
+    margin-top: 0;
+}
+
+/* If .space-top is kept on a list, do not add 2rem above first bullet */
+ul.proj-body.space-top,
+ol.proj-body.space-top {
+    padding-top: 0;
+}
+
 .proj-link {
     color: var(--primary-color);
 }
@@ -422,6 +463,11 @@ strong {
 }
 
 video {
+    width: 100%;
+}
+
+.proj-phone-vid video,
+.proj-phone-vid .img-placeholder {
     width: 100%;
 }
 
