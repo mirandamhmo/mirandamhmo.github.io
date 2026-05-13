@@ -12,52 +12,46 @@
     <script src="https://kit.fontawesome.com/67f90579cc.js" crossorigin="anonymous"></script>
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body id="index-page">
+<body id="index-page" data-index-nav="hey">
     <svg id="fader"></svg>
-    <div class="container">
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white smart-scroll">
-            <a class="navbar-brand js-scroll-trigger" href="index.html">Miranda Mo</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"> <span
-                    class="navbar-toggler-icon"></span> </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="#portfolio">Work</a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="proj/sandbox.html">Fun</a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="docs/MirandaMo_Resume.pdf"
-                            target="_blank">Resume</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <!-- Header -->
-        <header class="row space-lg">
-            <div class="mt-auto mb-auto ml-auto mr-auto">
-                <div class="col-md-12 space-bottom header-text">
-                    <h1 class="headline-big">Miranda Mo</h1>
-                    <p class="header-body">Hi! I'm a <span class="header-role-easter"><span
-                                class="header-role-easter__joke" aria-hidden="true">self-appointed office comedian</span><strong
+        <div class="index-pill-nav-wrap">
+            <nav class="index-pill-nav" aria-label="Primary">
+                <div class="index-pill-nav__inner">
+                    <a href="#index-top" class="index-pill-nav__link">Hey</a>
+                    <a href="#portfolio" class="index-pill-nav__link">Work</a>
+                    <a href="proj/sandbox.html" class="index-pill-nav__link">Fun</a>
+                    <a href="mailto:mirandamh.mo@gmail.com" class="index-pill-nav__link">Connect</a>
+                </div>
+            </nav>
+        </div>
+        <div class="index-landing" id="index-top">
+            <div class="index-landing__hero">
+                <div class="index-landing__hero-inner">
+                    <p class="header-body index-hero__blurb">Hi! I'm a <span class="header-role-easter"><span
+                                class="header-role-easter__joke" aria-hidden="true">certified office comedian</span><strong
                                 class="header-role-easter__role">product designer</strong></span> at <a
                             href="https://www.google.com/search?q=Meta+Superintelligence+Labs" target="_blank"
                             rel="noopener noreferrer" class="proj-link">Meta Superintelligence Labs</a>. Previously at
                         <a href="https://www.google.com/search?q=Microsoft" target="_blank" rel="noopener noreferrer"
                             class="proj-link">Microsoft</a>. My work focuses on developer platforms and technical workflows that bridge complexity and
                         usability.</p>
-                    <div class="header-cta footer-contact">
+                    <h1 class="headline-big index-hero__name">Miranda Mo</h1>
+                    <div class="header-cta footer-contact index-hero__contact">
                         <button type="button" class="footer-text-link js-copy-email" data-email="mirandamh.mo@gmail.com"
                             aria-label="Copy email address to clipboard">Copy email</button>
                         <span class="footer-contact-sep" aria-hidden="true">·</span>
                         <a href="https://www.linkedin.com/in/mirandamo/" target="_blank" rel="noopener noreferrer"
                             class="footer-text-link">LinkedIn</a>
+                        <span class="footer-contact-sep" aria-hidden="true">·</span>
+                        <a href="docs/MirandaMo_Resume.pdf" target="_blank" rel="noopener noreferrer"
+                            class="footer-text-link">Resume</a>
                     </div>
                 </div>
             </div>
-        </header>
-        <!-- Portfolio -->
-        <div id="portfolio" class="space-top">
+        </div>
+        <div class="container">
+            <!-- Portfolio -->
+        <div id="portfolio" class="index-portfolio-peek">
             <div id="proj-gallery" class="grid mb-5">
                 <div class="proj-card card">
                     <a href="proj/llamaapi.html">
@@ -145,6 +139,9 @@
                     <span class="footer-contact-sep" aria-hidden="true">·</span>
                     <a href="https://www.linkedin.com/in/mirandamo/" target="_blank" rel="noopener noreferrer"
                         class="footer-text-link">LinkedIn</a>
+                    <span class="footer-contact-sep" aria-hidden="true">·</span>
+                    <a href="docs/MirandaMo_Resume.pdf" target="_blank" rel="noopener noreferrer"
+                        class="footer-text-link">Resume</a>
                 </div>
             </div>
         </footer>

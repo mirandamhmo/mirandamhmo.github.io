@@ -235,10 +235,6 @@ Home
     margin-top: 0.35rem;
 }
 
-#index-page .headline-big {
-    margin-bottom: 1.25rem;
-}
-
 #index-page .header-body {
     margin-top: 0;
     margin-bottom: 1.75rem;
@@ -246,6 +242,206 @@ Home
 
 #index-page .header-cta {
     margin-top: 0;
+}
+
+/* Index: full-page grid (behind content), cream base */
+body#index-page {
+    position: relative;
+    background-color: #f5f4f0;
+}
+
+body#index-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(68, 68, 68, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(68, 68, 68, 0.07) 1px, transparent 1px);
+    background-size: 72px 72px;
+}
+
+/* Pill bar is fixed and must stack above .container; exclude it from this layer */
+body#index-page > :not(#fader):not(.index-pill-nav-wrap) {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes index-landing-waterfall {
+    from {
+        opacity: 0;
+        transform: translateY(1.35rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Landing hero: green glow (grid is on body) */
+#index-page .index-landing {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0 calc(50% - 50vw);
+    width: 100vw;
+    max-width: 100vw;
+    box-sizing: border-box;
+    padding-bottom: clamp(5rem, 14vh, 10rem);
+    background-color: transparent;
+    background-image: radial-gradient(
+        ellipse 130% 90% at 50% -15%,
+        rgba(0, 184, 148, 0.28) 0%,
+        transparent 58%
+    );
+}
+
+#index-page .index-pill-nav-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    padding-top: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    pointer-events: none;
+}
+
+#index-page .index-pill-nav-wrap .index-pill-nav {
+    position: relative;
+    pointer-events: auto;
+    font-family: 'Inter', sans-serif;
+}
+
+#index-page .index-pill-nav__inner {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 0.35rem 0.45rem;
+    background: #1a1a1a;
+    border-radius: 999px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    animation: index-landing-waterfall 0.72s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
+}
+
+#index-page .index-pill-nav__link {
+    display: inline-block;
+    padding: 0.45rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #f0f0f0;
+    text-decoration: none;
+    border-radius: 999px;
+    background-color: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Index pill: Hey vs Work highlight (driven by body data-index-nav + scroll spy JS) */
+#index-page[data-index-nav="hey"] .index-pill-nav__link[href="#index-top"] {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+#index-page[data-index-nav="work"] .index-pill-nav__link[href="#index-top"] {
+    background-color: transparent;
+    color: #f0f0f0;
+}
+
+#index-page[data-index-nav="work"] .index-pill-nav__link[href="#portfolio"] {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+#index-page .index-pill-nav-wrap .index-pill-nav__inner .index-pill-nav__link:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+    color: #f0f0f0;
+    opacity: 1;
+}
+
+#index-page .index-pill-nav__link:focus {
+    outline: none;
+}
+
+#index-page .index-pill-nav__link:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+#index-page .index-landing__hero {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 6.5rem 5vw clamp(3rem, 8vw, 5rem);
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+#index-page .index-landing__hero-inner {
+    width: 100%;
+    max-width: 100%;
+}
+
+#index-page .index-landing .index-hero__name {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(4.25rem, 18vw, 12rem);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    margin: 0 0 0.75rem;
+    padding: 0;
+    max-width: none;
+    width: 100%;
+    color: var(--text-dark);
+    font-weight: 800;
+    animation: index-landing-waterfall 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.34s both;
+}
+
+#index-page .index-landing .index-hero__blurb {
+    font-size: 1.2rem;
+    line-height: 1.65;
+    max-width: 600px;
+    margin: 0 0 0.75rem;
+    color: var(--text-grey);
+    animation: index-landing-waterfall 0.72s cubic-bezier(0.22, 1, 0.36, 1) 0.14s both;
+}
+
+#index-page .index-landing .index-hero__contact {
+    margin-top: 0;
+    font-size: 1.2rem;
+    animation: index-landing-waterfall 0.72s cubic-bezier(0.22, 1, 0.36, 1) 0.46s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #index-page .index-pill-nav__inner,
+    #index-page .index-landing .index-hero__blurb,
+    #index-page .index-landing .index-hero__name,
+    #index-page .index-landing .index-hero__contact {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+#index-page .index-portfolio-peek {
+    position: relative;
+    z-index: 2;
+    margin-top: -20px;
+    padding-top: 0;
+    scroll-margin-top: 5.5rem;
+}
+
+#index-page > .container {
+    overflow: visible;
 }
 
 /* Easter egg: hover "product designer" → strikethrough + joke above */
@@ -369,7 +565,7 @@ span-color {
 }
 
 .footer-contact {
-    font-size: 0.95rem;
+    font-size: 1rem;
 }
 
 .footer-text-link {
@@ -764,6 +960,24 @@ Media queries
     }
     #proj-gallery {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    #index-page .index-portfolio-peek {
+        margin-top: -20px;
+        padding-top: 0;
+    }
+
+    #index-page .index-landing .index-hero__name {
+        font-size: clamp(3.25rem, 14vw, 5.5rem);
+    }
+
+    #index-page .index-pill-nav__inner {
+        max-width: calc(100vw - 2rem);
+    }
+
+    #index-page .index-pill-nav__link {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.82rem;
     }
 
     #index-page #proj-gallery > .proj-card:nth-child(n) {

@@ -8,6 +8,7 @@ $(document).ready(function () {
     sidebar();
     fadeInPage();
     copyEmailButton();
+    updateIndexNavScrollSpy();
 });
 
 /** Copy email to clipboard (hero, footer, any .js-copy-email) */
@@ -64,11 +65,28 @@ function copyEmailButton() {
     }
 }
 
+/** Index home: pill nav green highlight follows scroll (Hey vs Work) */
+var INDEX_NAV_ACTIVE_LINE = 88;
+function updateIndexNavScrollSpy() {
+    var page = document.getElementById('index-page');
+    var portfolio = document.getElementById('portfolio');
+    if (!page || !portfolio) {
+        return;
+    }
+    var rect = portfolio.getBoundingClientRect();
+    var inWork = rect.top <= INDEX_NAV_ACTIVE_LINE && rect.bottom > 48;
+    page.setAttribute('data-index-nav', inWork ? 'work' : 'hey');
+}
+
 /** Navbar hidden on scroll-down*/
 /** ===================== */
-$('body').css('padding-top', $('.navbar').outerHeight() + 'px')
+var $nav = $('.navbar');
+if ($nav.length) {
+    $('body').css('padding-top', $nav.outerHeight() + 'px');
+}
 var last_scroll_top = 0;
 win.on('scroll', function () {
+    updateIndexNavScrollSpy();
     scroll_top = $(this).scrollTop();
     if (scroll_top < last_scroll_top) {
         $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
@@ -83,7 +101,7 @@ win.on('scroll', function () {
 /** ===================== */
 function scrollSmoothTo(elementId) {
     var element = document.getElementById(elementId);
-    const offset = $('.navbar').outerHeight();
+    const offset = $('.navbar').length ? $('.navbar').outerHeight() : 0;
     const bodyRect = document.body.getBoundingClientRect().top;
     const elementRect = element.getBoundingClientRect().top;
     const elementPosition = elementRect - bodyRect;
@@ -121,6 +139,12 @@ function sidebar() {
         })
     };
 }
+
+window.addEventListener('hashchange', function () {
+    if (document.getElementById('index-page')) {
+        updateIndexNavScrollSpy();
+    }
+});
 
 /** Fade In */
 /** ===================== */
