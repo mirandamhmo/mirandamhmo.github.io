@@ -14,14 +14,32 @@ body.hidden-scroll {
     right: 0;
     top: 0;
     bottom: 0;
-    background: #fff;
-    opacity: 0.7;
+    background: rgba(255, 255, 255, 0.72);
+    opacity: 1;
     display: none;
-    z-index: 1035;
-    /* backdrop-filter: blur(6px); */
+    z-index: 10000000;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 }
+/* Wrapper must create a stacking context above the scrim; without position+z-index the
+   overlay (also fixed, higher z-index than .sl-image) paints on top of the photo. */
 .sl-wrapper {
-    z-index: 1040;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000001;
+    pointer-events: none;
+}
+.sl-wrapper .sl-image,
+.sl-wrapper .sl-close,
+.sl-wrapper .sl-counter,
+.sl-wrapper .sl-navigation,
+.sl-wrapper .sl-spinner {
+    pointer-events: auto;
 }
 .sl-wrapper button {
     border: 0 none;
@@ -45,7 +63,8 @@ body.hidden-scroll {
     width: 44px;
     line-height: 44px;
     font-family: Arial, Baskerville, monospace;
-    color: #000;
+    color: #2d2d2d;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
     font-size: 3rem;
 }
 .sl-wrapper .sl-close:focus {
@@ -57,7 +76,8 @@ body.hidden-scroll {
     top: 30px;
     left: 30px;
     z-index: 1060;
-    color: #000;
+    color: #3a3a3a;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
     font-size: 1rem;
 }
 .sl-wrapper .sl-navigation {
@@ -75,7 +95,8 @@ body.hidden-scroll {
     display: block;
     z-index: 10060;
     font-family: Arial, Baskerville, monospace;
-    color: #000;
+    color: #2d2d2d;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 .sl-wrapper .sl-navigation button.sl-next {
     right: 5px;
@@ -154,11 +175,13 @@ body.hidden-scroll {
 }
 .sl-wrapper .sl-image .sl-caption {
     display: none;
-    padding: 5px;
-    padding-right: 0px;
-    color: #4A4A4A;
-    background: rgba(255, 255, 255, 0.8);
+    padding: 0.75rem 1rem 0.9rem;
+    padding-right: 1rem;
+    color: #1a1a1a;
+    background: rgba(250, 250, 248, 0.97);
     font-size: 1rem;
+    line-height: 1.55;
+    box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.18);
 /*    position: absolute;*/
     bottom: 0;
     left: 0;
@@ -176,12 +199,12 @@ body.hidden-scroll {
     position: absolute;
     bottom: 5px;
     right: 5px;
-    color: #000;
+    color: #444444;
     z-index: 1060;
 }
 .sl-spinner {
     display: none;
-    border: 5px solid #333;
+    border: 5px solid rgba(0, 0, 0, 0.1);
     border-radius: 40px;
     height: 40px;
     left: 50%;
@@ -190,7 +213,7 @@ body.hidden-scroll {
     position: fixed;
     top: 50%;
     width: 40px;
-    z-index: 1007;
+    z-index: 10050;
     -webkit-animation: pulsate 1s ease-out infinite;
     -moz-animation: pulsate 1s ease-out infinite;
     -ms-animation: pulsate 1s ease-out infinite;

@@ -9,6 +9,7 @@ $(document).ready(function () {
     fadeInPage();
     copyEmailButton();
     updateIndexNavScrollSpy();
+    initIndexCarouselLightbox();
 });
 
 /** Copy email to clipboard (hero, footer, any .js-copy-email) */
@@ -65,17 +66,79 @@ function copyEmailButton() {
     }
 }
 
-/** Index home: pill nav green highlight follows scroll (Hey vs Work) */
-var INDEX_NAV_ACTIVE_LINE = 88;
+/** Index home: carousel art tiles use SimpleLightbox (same plugin as sandbox.html) */
+function initIndexCarouselLightbox() {
+    var carousel = document.querySelector('#index-page .index-life-outside__carousel');
+    if (!carousel || typeof window.jQuery === 'undefined' || !$.fn.simpleLightbox) {
+        return;
+    }
+    var $links = $(carousel).find('.index-life-outside__carousel-set:not([aria-hidden="true"]) a.img-link');
+    if (!$links.length) {
+        return;
+    }
+    $links.simpleLightbox();
+    $links.on('show.simplelightbox', function () {
+        carousel.classList.add('index-life-outside__carousel--paused');
+    });
+    $links.on('close.simplelightbox closed.simplelightbox', function () {
+        carousel.classList.remove('index-life-outside__carousel--paused');
+    });
+}
+
+/** Index home: pill nav follows scroll (Work / About / Connect; home never highlighted) */
+function getIndexNavActiveLine() {
+    var about = document.getElementById('about');
+    if (!about) {
+        return 100;
+    }
+    try {
+        var sm = parseFloat(window.getComputedStyle(about).scrollMarginTop);
+        if (!isNaN(sm) && sm >= 0) {
+            return Math.round(sm + 12);
+        }
+    } catch (e) {
+        /* ignore */
+    }
+    return 100;
+}
+
 function updateIndexNavScrollSpy() {
     var page = document.getElementById('index-page');
     var portfolio = document.getElementById('portfolio');
+    var about = document.getElementById('about');
+    var connect = document.getElementById('connect');
     if (!page || !portfolio) {
         return;
     }
-    var rect = portfolio.getBoundingClientRect();
-    var inWork = rect.top <= INDEX_NAV_ACTIVE_LINE && rect.bottom > 48;
-    page.setAttribute('data-index-nav', inWork ? 'work' : 'hey');
+    var doc = document.documentElement;
+    var body = document.body;
+    var scrollY = window.scrollY || window.pageYOffset;
+    var viewH = window.innerHeight;
+    var fullH = Math.max(doc.scrollHeight, doc.offsetHeight, body.scrollHeight, body.offsetHeight);
+    if (connect && scrollY + viewH >= fullH - 4) {
+        page.setAttribute('data-index-nav', 'connect');
+        return;
+    }
+    var line = getIndexNavActiveLine();
+    var sections = [
+        { el: portfolio, nav: 'work' },
+        { el: about, nav: 'about' },
+        { el: connect, nav: 'connect' }
+    ];
+    var bestTop = -Infinity;
+    var next = 'top';
+    for (var i = 0; i < sections.length; i += 1) {
+        var s = sections[i];
+        if (!s.el) {
+            continue;
+        }
+        var r = s.el.getBoundingClientRect();
+        if (r.top <= line && r.bottom > 48 && r.top > bestTop) {
+            bestTop = r.top;
+            next = s.nav;
+        }
+    }
+    page.setAttribute('data-index-nav', next);
 }
 
 /** Navbar hidden on scroll-down*/
@@ -146,6 +209,34 @@ window.addEventListener('hashchange', function () {
     }
 });
 
+/** True for in-page #anchors and same-path URLs (skip fader + allow native hash scroll) */
+function indexPageShouldSkipFadeTransition(anchor) {
+    var raw = (anchor.getAttribute('href') || '').trim();
+    if (!raw || raw.indexOf('javascript:') === 0) {
+        return true;
+    }
+    if (raw.charAt(0) === '#') {
+        return true;
+    }
+    try {
+        var u = new URL(anchor.href, window.location.href);
+        if (u.origin !== window.location.origin) {
+            return false;
+        }
+        var norm = function (p) {
+            p = p || '/';
+            p = p.replace(/\/index\.html$/i, '/');
+            if (p.length > 1 && p.charAt(p.length - 1) === '/') {
+                p = p.slice(0, -1);
+            }
+            return p || '/';
+        };
+        return norm(u.pathname) === norm(window.location.pathname) && u.search === window.location.search;
+    } catch (e) {
+        return true;
+    }
+}
+
 /** Fade In */
 /** ===================== */
 function fadeInPage() {
@@ -158,8 +249,7 @@ function fadeInPage() {
         var anchors = document.querySelectorAll('a:not(.img-link)');
 
         for (var idx = 0; idx < anchors.length; idx += 1) {
-            if (anchors[idx].hostname !== window.location.hostname ||
-                anchors[idx].pathname === window.location.pathname) {
+            if (indexPageShouldSkipFadeTransition(anchors[idx])) {
                 continue;
             }
             anchors[idx].addEventListener('click', function (event) {
