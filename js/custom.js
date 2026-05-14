@@ -10,6 +10,20 @@ $(document).ready(function () {
     copyEmailButton();
     updateIndexNavScrollSpy();
     initIndexCarouselLightbox();
+    initIndexAboutCaptchaCheckbox();
+
+    var $smart = $('.smart-scroll');
+    if ($smart.length) {
+        var st = win.scrollTop();
+        last_scroll_top = st;
+        if (st <= 16) {
+            $smart.removeClass('scrolled-down').addClass('scrolled-up');
+        } else {
+            $smart.removeClass('scrolled-up').addClass('scrolled-down');
+        }
+    } else {
+        last_scroll_top = win.scrollTop();
+    }
 });
 
 /** Copy email to clipboard (hero, footer, any .js-copy-email) */
@@ -85,6 +99,46 @@ function initIndexCarouselLightbox() {
     });
 }
 
+/** Index about: reCAPTCHA-style checkbox — spinner, then check (plain green) */
+function initIndexAboutCaptchaCheckbox() {
+    var cb = document.getElementById('index-about-captcha-checkbox');
+    var row = cb && cb.closest('.index-about-captcha__robot-row');
+    if (!cb || !row) {
+        return;
+    }
+
+    var verifyMs = 1100;
+    try {
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            verifyMs = 200;
+        }
+    } catch (e) { /* ignore */ }
+
+    cb.addEventListener('click', function (e) {
+        if (cb.getAttribute('data-captcha-done') === '1') {
+            e.preventDefault();
+            cb.checked = true;
+            return;
+        }
+        if (row.classList.contains('index-about-captcha__robot-row--verifying')) {
+            e.preventDefault();
+            cb.checked = false;
+            return;
+        }
+        e.preventDefault();
+        cb.checked = false;
+        row.classList.add('index-about-captcha__robot-row--verifying');
+        row.setAttribute('aria-busy', 'true');
+        window.setTimeout(function () {
+            row.classList.remove('index-about-captcha__robot-row--verifying');
+            row.classList.add('index-about-captcha__robot-row--verified');
+            row.setAttribute('aria-busy', 'false');
+            cb.checked = true;
+            cb.setAttribute('data-captcha-done', '1');
+        }, verifyMs);
+    });
+}
+
 /** Index home: pill nav follows scroll (Work / About / Connect; home never highlighted) */
 function getIndexNavActiveLine() {
     var about = document.getElementById('about');
@@ -150,12 +204,19 @@ if ($nav.length) {
 var last_scroll_top = 0;
 win.on('scroll', function () {
     updateIndexNavScrollSpy();
-    scroll_top = $(this).scrollTop();
-    if (scroll_top < last_scroll_top) {
-        $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
+    var scroll_top = win.scrollTop();
+    var $smart = $('.smart-scroll');
+    if (!$smart.length) {
+        last_scroll_top = scroll_top;
+        return;
     }
-    else {
-        $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
+    /* Near top of page: always show bar (avoids spurious scrolled-down when scroll_top === last_scroll_top). */
+    if (scroll_top <= 16) {
+        $smart.removeClass('scrolled-down').addClass('scrolled-up');
+    } else if (scroll_top < last_scroll_top) {
+        $smart.removeClass('scrolled-down').addClass('scrolled-up');
+    } else if (scroll_top > last_scroll_top) {
+        $smart.removeClass('scrolled-up').addClass('scrolled-down');
     }
     last_scroll_top = scroll_top;
 });
@@ -164,7 +225,13 @@ win.on('scroll', function () {
 /** ===================== */
 function scrollSmoothTo(elementId) {
     var element = document.getElementById(elementId);
-    const offset = $('.navbar').length ? $('.navbar').outerHeight() : 0;
+    var offset = 0;
+    if ($('.navbar').length) {
+        offset = $('.navbar').outerHeight();
+    } else if (document.body.classList.contains('site-detail')) {
+        var $pill = $('body.site-detail .index-pill-nav-wrap').first();
+        offset = $pill.length ? Math.round($pill.outerHeight()) : 0;
+    }
     const bodyRect = document.body.getBoundingClientRect().top;
     const elementRect = element.getBoundingClientRect().top;
     const elementPosition = elementRect - bodyRect;
