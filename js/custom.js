@@ -80,7 +80,7 @@ function copyEmailButton() {
     }
 }
 
-/** Index home: carousel art tiles use SimpleLightbox (same plugin as sandbox.html) */
+/** Index home: carousel art tiles use SimpleLightbox. */
 function initIndexCarouselLightbox() {
     var carousel = document.querySelector('#index-page .index-life-outside__carousel');
     if (!carousel || typeof window.jQuery === 'undefined' || !$.fn.simpleLightbox) {
