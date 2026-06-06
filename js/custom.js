@@ -89,7 +89,10 @@ function initIndexCarouselLightbox() {
     if (!$links.length) {
         return;
     }
-    $links.simpleLightbox();
+    $links.simpleLightbox({
+        captionPosition: 'outside',
+        heightRatio: 0.82
+    });
 }
 
 /** Index about: reCAPTCHA-style checkbox — spinner, then check (plain green) */
