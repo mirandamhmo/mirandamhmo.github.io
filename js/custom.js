@@ -11,7 +11,6 @@ $(document).ready(function () {
     updateIndexNavScrollSpy();
     initIndexCarouselLightbox();
     initIndexAboutCaptchaCheckbox();
-
     var $smart = $('.smart-scroll');
     if ($smart.length) {
         var st = win.scrollTop();
@@ -80,23 +79,17 @@ function copyEmailButton() {
     }
 }
 
-/** Index home: carousel art tiles use SimpleLightbox. */
+/** Index home: gallery-wall art tiles use SimpleLightbox. */
 function initIndexCarouselLightbox() {
-    var carousel = document.querySelector('#index-page .index-life-outside__carousel');
-    if (!carousel || typeof window.jQuery === 'undefined' || !$.fn.simpleLightbox) {
+    var gallery = document.querySelector('#index-page .index-life-outside__gallery');
+    if (!gallery || typeof window.jQuery === 'undefined' || !$.fn.simpleLightbox) {
         return;
     }
-    var $links = $(carousel).find('.index-life-outside__carousel-set:not([aria-hidden="true"]) a.img-link');
+    var $links = $(gallery).find('a.img-link');
     if (!$links.length) {
         return;
     }
     $links.simpleLightbox();
-    $links.on('show.simplelightbox', function () {
-        carousel.classList.add('index-life-outside__carousel--paused');
-    });
-    $links.on('close.simplelightbox closed.simplelightbox', function () {
-        carousel.classList.remove('index-life-outside__carousel--paused');
-    });
 }
 
 /** Index about: reCAPTCHA-style checkbox — spinner, then check (plain green) */
@@ -174,10 +167,13 @@ function updateIndexNavScrollSpy() {
         return;
     }
     var line = getIndexNavActiveLine();
+    /* The connect section wraps the sidequests gallery, which reads as part of About —
+       so keep About highlighted while scrolling the grid. Connect only lights up via the
+       bottom-of-page check above. */
     var sections = [
         { el: portfolio, nav: 'work' },
         { el: about, nav: 'about' },
-        { el: connect, nav: 'connect' }
+        { el: connect, nav: 'about' }
     ];
     var bestTop = -Infinity;
     var next = 'top';

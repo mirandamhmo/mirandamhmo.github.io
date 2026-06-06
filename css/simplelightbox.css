@@ -140,6 +140,8 @@ body.hidden-scroll {
     -ms-touch-action: none;
     touch-action: none;
     z-index: 10000;
+    border-radius: 7px;
+    overflow: hidden;
 }
 .sl-wrapper .sl-image img {
     margin: 0;
@@ -174,7 +176,7 @@ body.hidden-scroll {
     }
 }
 .sl-wrapper .sl-image .sl-caption {
-    display: none;
+    display: block;
     padding: 0.75rem 1rem 0.9rem;
     padding-right: 1rem;
     color: #1a1a1a;
@@ -182,7 +184,7 @@ body.hidden-scroll {
     font-size: 1rem;
     line-height: 1.55;
     box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.18);
-/*    position: absolute;*/
+    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
