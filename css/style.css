@@ -854,7 +854,7 @@ body.site-detail > :not(#fader):not(.index-pill-nav-wrap):not(.sl-overlay):not(.
     margin: 0;
     flex: 1;
     min-width: 0;
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 700;
     line-height: 1.35;
     color: #202124;
