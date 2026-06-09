@@ -99,16 +99,59 @@ function initIndexCarouselLightbox() {
 function initIndexAboutCaptchaCheckbox() {
     var cb = document.getElementById('index-about-captcha-checkbox');
     var row = cb && cb.closest('.index-about-captcha__robot-row');
+    var captcha = document.querySelector('#index-page .index-about-captcha');
     if (!cb || !row) {
         return;
     }
 
-    var verifyMs = 1100;
+    var verifyMs = 550;
+    var startDelayMs = 180;
     try {
         if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            verifyMs = 200;
+            verifyMs = 80;
+            startDelayMs = 0;
         }
     } catch (e) { /* ignore */ }
+
+    var verifyTimer = null;
+    var startTimer = null;
+
+    function completeVerify() {
+        verifyTimer = null;
+        row.classList.remove('index-about-captcha__robot-row--verifying');
+        row.classList.add('index-about-captcha__robot-row--verified');
+        row.setAttribute('aria-busy', 'false');
+        cb.checked = true;
+        cb.setAttribute('data-captcha-done', '1');
+    }
+
+    function runVerify() {
+        if (cb.getAttribute('data-captcha-done') === '1') {
+            return;
+        }
+        if (row.classList.contains('index-about-captcha__robot-row--verifying')) {
+            return;
+        }
+        if (verifyTimer) {
+            window.clearTimeout(verifyTimer);
+            verifyTimer = null;
+        }
+
+        cb.checked = false;
+        row.classList.add('index-about-captcha__robot-row--verifying');
+        row.setAttribute('aria-busy', 'true');
+        verifyTimer = window.setTimeout(completeVerify, verifyMs);
+    }
+
+    function scheduleAutoVerify() {
+        if (cb.getAttribute('data-captcha-done') === '1' || startTimer) {
+            return;
+        }
+        startTimer = window.setTimeout(function () {
+            startTimer = null;
+            runVerify();
+        }, startDelayMs);
+    }
 
     cb.addEventListener('click', function (e) {
         if (cb.getAttribute('data-captcha-done') === '1') {
@@ -122,17 +165,27 @@ function initIndexAboutCaptchaCheckbox() {
             return;
         }
         e.preventDefault();
-        cb.checked = false;
-        row.classList.add('index-about-captcha__robot-row--verifying');
-        row.setAttribute('aria-busy', 'true');
-        window.setTimeout(function () {
-            row.classList.remove('index-about-captcha__robot-row--verifying');
-            row.classList.add('index-about-captcha__robot-row--verified');
-            row.setAttribute('aria-busy', 'false');
-            cb.checked = true;
-            cb.setAttribute('data-captcha-done', '1');
-        }, verifyMs);
+        if (startTimer) {
+            window.clearTimeout(startTimer);
+            startTimer = null;
+        }
+        runVerify();
     });
+
+    if (captcha && 'IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+            for (var i = 0; i < entries.length; i += 1) {
+                if (entries[i].isIntersecting) {
+                    scheduleAutoVerify();
+                    observer.disconnect();
+                    break;
+                }
+            }
+        }, { threshold: 0.2 });
+        observer.observe(captcha);
+    } else {
+        scheduleAutoVerify();
+    }
 }
 
 /** Index home: pill nav follows scroll (Work / About / Connect; home never highlighted) */

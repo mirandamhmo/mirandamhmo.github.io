@@ -680,7 +680,7 @@ body.site-detail > :not(#fader):not(.index-pill-nav-wrap):not(.sl-overlay):not(.
     border-top-color: var(--primary-color);
     opacity: 1;
     transform: none;
-    animation: index-about-captcha-spin 0.65s linear infinite;
+    animation: index-about-captcha-spin 0.45s linear infinite;
 }
 
 #index-page .index-about-captcha__robot-row--verified .index-about-captcha__spinner {
@@ -741,8 +741,8 @@ body.site-detail > :not(#fader):not(.index-pill-nav-wrap):not(.sl-overlay):not(.
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
     pointer-events: none;
     transition:
-        opacity 0.18s ease,
-        transform 0.42s cubic-bezier(0.34, 1.55, 0.64, 1);
+        opacity 0.12s ease,
+        transform 0.28s cubic-bezier(0.34, 1.55, 0.64, 1);
 }
 
 #index-page .index-about-captcha__robot-row--verified .index-about-captcha__checkbox-faux::after,
@@ -1467,11 +1467,19 @@ body.site-detail .proj-meta {
     margin-right: 0;
 }
 
+body.site-detail .proj-meta > .col-md-2,
 body.site-detail .proj-meta > .col-md-3,
 body.site-detail .proj-meta > .col-md-6 {
+    flex: none;
+    width: auto;
+    min-width: 0;
     padding-left: 0;
     padding-right: 0;
-    max-width: 100%;
+    max-width: none;
+}
+
+body.site-detail .proj-meta > .col-md-2 {
+    grid-column: span 2;
 }
 
 body.site-detail .proj-meta > .col-md-3 {
@@ -1487,6 +1495,7 @@ body.site-detail .proj-meta .text-small {
     margin-bottom: 0.5rem;
 }
 
+body.site-detail .proj-meta > .col-md-2 > p,
 body.site-detail .proj-meta > .col-md-3 > p,
 body.site-detail .proj-meta > .col-md-6 > p {
     margin-top: 0;
@@ -1494,12 +1503,24 @@ body.site-detail .proj-meta > .col-md-6 > p {
     line-height: 1.55;
 }
 
+body.site-detail .proj-meta > .col-md-2 > p + p,
 body.site-detail .proj-meta > .col-md-3 > p + p,
 body.site-detail .proj-meta > .col-md-6 > p + p {
     margin-top: 0.4rem;
 }
 
+@media (max-width: 991.98px) {
+    body.site-detail .proj-meta > .col-md-2 {
+        grid-column: span 4;
+    }
+
+    body.site-detail .proj-meta > .col-md-6 {
+        grid-column: span 12;
+    }
+}
+
 @media (max-width: 767.98px) {
+    body.site-detail .proj-meta > .col-md-2,
     body.site-detail .proj-meta > .col-md-3,
     body.site-detail .proj-meta > .col-md-6 {
         grid-column: span 12;
